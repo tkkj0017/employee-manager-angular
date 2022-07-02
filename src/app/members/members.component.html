@@ -13,13 +13,4 @@
   </li>
 </ul>
 
-<div *ngIf="selectedMember">
-  <h2>社員編集</h2>
-  <div><span>id: </span>{{ selectedMember.id }}</div>
-  <div>
-    <label>名前:
-      <!-- ngModel ... フォームでデータと紐付ける(双方向データバインディング)-->
-      <input type="text" [(ngModel)]="selectedMember.name" placeholder="名前">
-    </label>
-  </div>
-</div>
+<app-member-detail [member]="selectedMember"></app-member-detail>
