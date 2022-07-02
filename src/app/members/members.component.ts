@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../member';
-import { MEMBERS } from '../mock-members';
+import { MemberService } from '../member.service'
 
 @Component({
   selector: 'app-members',
@@ -9,21 +9,26 @@ import { MEMBERS } from '../mock-members';
 })
 export class MembersComponent implements OnInit {
 
-  members = MEMBERS;
-  member: Member = {
-    id: 1,
-    name: 'kojima'
-  };
+  members: Member[];
   selectedMember: Member;
 
-  constructor() { }
+  // DI
+  constructor(private memberSerivice: MemberService) {}
 
   // ライフサイクルメソッド
-  // コンポネントが初期化される度に実行されるメソッド
+  // コンポネントが初期化される時に実行されるメソッド
+  // 外部からデータを取得する場合はこの中で実行するのが基本
   ngOnInit(): void {
+    this.getMembers();
   }
 
   onSelect(member: Member): void {
     this.selectedMember = member;
+  }
+
+  getMembers(): void {
+    this.memberSerivice.getMembers()
+      // subscribe...of関数のデータを受け取れる
+      .subscribe(members => this.members = members);
   }
 }
