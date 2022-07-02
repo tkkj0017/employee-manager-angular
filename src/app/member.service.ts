@@ -1,3 +1,4 @@
+import { MessageService } from './message.service';
 import { Member } from './member';
 import { Injectable } from '@angular/core';
 import { MEMBERS } from './mock-members';
@@ -9,9 +10,10 @@ import { Observable, of } from 'rxjs';
 })
 export class MemberService {
 
-  constructor() { }
+  constructor(private messageService: MessageService){}
 
   getMembers(): Observable<Member[]> {
+    this.messageService.add('MemberService: 社員一覧データを取得しました');
     return of(MEMBERS);
   }
 }
