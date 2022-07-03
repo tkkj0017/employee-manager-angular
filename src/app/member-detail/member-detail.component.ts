@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-  // @Input ... プロパティを受け取るために必要
+  // @Input ... 親コンポネントからのプロパティを受け取るために必要
   @Input() member: Member;
 
   constructor() { }

@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { MEMBERS } from './mock-members';
 import { Observable, of } from 'rxjs';
 
-// @Injectable... サービスがアプリのどこで使われるか指定する
+// @Injectable... サービスを他のクラスやコンポ年とで注入可能であることを示す
+// providedIn: 'root'  はアプリのどこでも使用可能であるという意味
 @Injectable({
   providedIn: 'root'
 })
